@@ -26,7 +26,7 @@ export default defineConfig({
     baseURL: process.env.BASE_URL || 'https://default.example.com',
     trace: 'on',
     video: 'on',
-    headless:false
+    headless:true
   },
 
   
