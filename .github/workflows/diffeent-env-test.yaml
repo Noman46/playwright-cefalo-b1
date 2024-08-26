@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Different Environment Test
 on:
   workflow_dispatch:
 
