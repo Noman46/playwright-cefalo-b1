@@ -1,0 +1,14 @@
+name: Different Environment Test
+on:
+  workflow_dispatch:
+
+jobs:
+  echo_name:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Echo Variables Name
+        run: echo ${{ env.BASE_ENV_URL }}
