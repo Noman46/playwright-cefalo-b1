@@ -16,4 +16,4 @@ jobs:
       - name: Echo Variables Name
         run: echo $BASE_l_ENV_URL
       - name: Echo env
-        run: echo ${{ secrets.BASE_ENV_URL }}
+        run: echo ${{ secrets.stage.BASE_ENV_URL }}
