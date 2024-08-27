@@ -1,4 +1,4 @@
-name: Different Environment Test
+name: Environemnt Variables
 on:
   workflow_dispatch:
 
