@@ -1,6 +1,8 @@
 name: Environemnt Variables
 on:
   workflow_dispatch:
+  env:
+    BASE_ENV_URL: "My Name is noman"
 
 jobs:
   echo_name:
@@ -11,4 +13,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Echo Variables Name
-        run: echo ${{ env.stage.BASE_ENV_URL }}
+        run: echo $BASE_ENV_URL
