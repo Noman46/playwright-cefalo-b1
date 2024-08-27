@@ -1,7 +1,8 @@
 name: Environemnt Variables
 on:
   workflow_dispatch:
-  env:
+
+env:
     BASE_ENV_URL: "My Name is noman"
 
 jobs:
