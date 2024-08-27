@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 env:
-    BASE_ENV_URL: "My Name is noman"
+    BASE_l_ENV_URL: "My Name is noman"
 
 jobs:
   echo_name:
@@ -14,4 +14,6 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Echo Variables Name
-        run: echo $BASE_ENV_URL
+        run: echo $BASE_l_ENV_URL
+      - name: Echo env
+        run: echo ${{ secrets.BASE_ENV_URL }}
