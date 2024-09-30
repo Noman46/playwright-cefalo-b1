@@ -1,20 +1,43 @@
-name: Environemnt Variables
+name: Playwright Tests
+
 on:
   workflow_dispatch:
-
-env:
-    BASE_l_ENV_URL: "My Name is noman"
+    inputs:
+      environment:
+        description: 'Select environment to run tests'
+        required: true
+        default: 'local'
+        type: choice
+        options:
+          - local
+          - test
+          - stage
+          - prod
 
 jobs:
-  echo_name:
+  test:
     runs-on: ubuntu-latest
-    environment: test
+
+    strategy:
+      matrix:
+        environment: [local, test, stage, prod]
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Echo Variables Name
-        run: echo $BASE_l_ENV_URL
-      - name: Echo env
-        run: echo ${{ vars.BASE_ENV_URL }}
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Playwright Tests in ${{ matrix.environment }} environment
+        run: npm run test:${{ matrix.environment }}
+        env:
+          ENV: ${{ matrix.environment }}
+          PROD_BASE_URL: ${{ secrets.PROD_BASE_URL }}
+
+      - name: Upload Playwright Test Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-results
+          path: playwright-report
